@@ -1,0 +1,122 @@
+<!-- Bootstrap Exercise -->
+
+<!-- Students: 
+ Working with someone closest to you:
+
+    1. Navigate to the Bootstrap website.
+
+    2. Copy the link to the Bootstrap CSS file into one of your old HTML files.
+
+    3. Look through the Bootstrap CSS or Components list and incorporate at least three Bootstrap elements onto your page.
+
+    4. Slack a screenshot of your page to your section’s channel when you are done.
+
+    5. Hint: First include a link to Bootstrap’s CSS. Then visit the Bootstrap page on CSS or Components. 
+
+  IMPORTANT: If you finish early, let the TAs know so you can be sent to help others around you.
+-->
+
+
+<!DOCTYPE html>
+<html lang="en-us">
+
+<head>
+
+  <meta charset="UTF-8">
+  <title>Bootstrap DemoButtons</title>
+
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+
+</head>
+
+<style>
+body {
+  background-color: rgb(215, 228, 233);
+}
+.jumbotron {
+  background-color: lightblue;
+
+}
+
+.form-group {
+  background-color: lightblue;
+  color: black;
+  margin: 20px;
+  padding: 20px;
+}
+
+</style>
+
+<body>
+ 
+  <!-- Regular Buttons -->
+ 
+  <div class="jumbotron text-center">
+      <h1>New Your Times Search</h1>
+  </div>
+
+  <form>
+      <div class="form-group"><h3>Search Parameters</h3></div>
+      <div class="form-group">
+        <label for="searchTerm">Search Term</label>
+        <input type="searchTerm" class="form-control" id="exampleInputEmail1" aria-describedby="" placeholder="">
+      </div>
+
+<div>
+      <div class="form-group">
+          <label for="numRecs">Number of Records to Retrieve</label>
+          <select class="form-control" id="numRecs">
+            <option>1</option>
+            <option>2</option>
+            <option>3</option>
+            <option>4</option>
+            <option>5</option>
+            <option>6</option>
+            <option>7</option>
+            <option>8</option>
+            <option>9</option>
+            <option>10</option>
+          </select>
+        </div>
+      <div class="form-group">
+          <label for="startyYear">Start Year (Optional)</label>
+          <input type="startyYear" class="form-control" id="startyYear" aria-describedby="" placeholder="">
+      </div>
+
+      <div class="form-group">
+          <label for="endYear">End Year (Optional)</label>
+          <input type="endYear" class="form-control" id="endYear" aria-describedby="" placeholder="">
+      </div>
+
+    </div>
+    <div class="form-group">
+
+        <button id="submitButton" type="submit" class="btn btn-primary">Submit</button>
+        <button id="clearButton" type="submit" class="btn btn-primary">Clear</button>
+      <div>
+      </form>
+  
+  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+
+</body>
+<style>
+    body {
+      background-color: lightblue;
+    }
+    .jumbotron {
+      background-color: lightblue;
+    
+    }
+    
+    .form-group {
+      background-color: lightblue;
+      color: black;
+      margin: 10px;
+      padding-left: 80px;
+      padding-right: 80px;
+    }
+    
+    </style>
+</html>
