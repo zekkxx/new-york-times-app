@@ -1,14 +1,97 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-    <script type="text/javascript"></script>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">  
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>NYT Search</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 </head>
 <body>
 
+<!---Jumbotron-->
+ <div class="jumbotron">
+    <h1 class="display-3 text-justify-center">New York Times Search</h1>
+        <p class="lead">Search past articles of the New York Times!</p>
+</div>
+
+
+ <!-------Search parameters------>
+ <div class="container border">
+     
+    <div class="row">
+         <div class="col-sm-12">
+             <p>Search Parameters</p>
+             <hr class="my-4">
+         </div>
+    </div>
+  
+
+    <!---Search Term-->
+    <label for="basic-url">Search Term</label>
+    <div class="input-group mb-3">
+                
+    <input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default" id="searchTerm">
+    </div>
+
+
+    <!---Numer of records-->
+    <label for="basic-url">Number of Records to Retrieve</label>
+    <div class="input-group mb-3">
+    <select class="custom-select" id="inputGroupSelect02">
+        <option selected value="1">1</option>
+        <option value="2">2</option>
+        <option value="3">3</option>
+        <option value="4">4</option>
+        <option value="5">5</option>
+        <option value="6">6</option>
+        <option value="7">7</option>
+        <option value="8">8</option>
+        <option value="9">9</option>
+        <option value="10">10</option>
+    </select>
+    </div>
+
+
+    <!---Start Year-->
+    <label for="basic-url">Start Year (Optional)</label>
+    <div class="input-group mb-3">
+        <input type="number" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default" id="startYear">
+    </div>
+
+    <!---End Year-->
+    <label for="basic-url">End Year (Optional)</label>
+    <div class="input-group mb-3">
+        <input type="number" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default" id="endYear">
+    </div>
+
+    <!--Buttons-->
+    <button type="button" class="btn btn-primary btn-sm mb-3 mr-3">Search</button>
+    <button type="button" class="btn btn-secondary btn-sm mb-3">Clear</button>
+
+</div>
+
+<!----Search results-->  
+<div class="container mt-4 border ">
+  
+    <div class="row">
+        <div class="col-sm-12">
+            <p>Top Articles</p>
+        </div>
+
+    </div>
+
+</div>
+        
+
+        
+        
+        
+        
+        
+        
+ <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
 </body>
 </html>
