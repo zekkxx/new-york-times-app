@@ -1,7 +1,18 @@
 # NewYorkTimes
-A class mini-project designed to create a readable NewYork times browser using jQuery, ajax, and the NYTimes API
+A mini-project designed to create a readable NewYork times browser using jQuery, ajax, and the NYTimes API
 
-Written by: Kieran Anthony, Mike Snyder, Ivan Wijetunge, Brian Lynn, Jeff Samuels
+Designed by:
+[Kieran Anthony](https://github.com/zekkxx),
+[Mike Snyder](https://github.com/mikesnyder),
+[Ivan Wijetunge](https://github.com/iwijetunge),
+[Brian Lynn](https://github.com/Balynn077),
+[Jeff Samuels](https://github.com/jeffsamuels)
+
+## Utilized Technology:
+Primary CSS Source from [Bootstrap](https://getbootstrap.com/). API from [The New York Times Developer Network](https://developer.nytimes.com/). This project utilizes jQuery and Ajax for requests.
+
+## How to use this project:
+
 
 Variables needed from Front End Group: keywords, numArticles, yearStart, yearEnd
 --API team will pull from index.html input ids and values upon click of searchButton

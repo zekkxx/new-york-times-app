@@ -1,0 +1,10 @@
+/* Color Palette: */
+/* #E9ECEF, C2E0FF, A8D4FF, B38F52, FFDFA8 */
+
+body{
+    background-color: #A8D4FF;
+}
+
+.bg-gray{
+    background-color: rgb(233,236,239);
+}
