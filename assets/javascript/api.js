@@ -1,4 +1,4 @@
-var APIKey = "uTcqzVBtVKkANJqiUqXC2MdKZAcezB1A";
+var APIKey = process.env.nyt_APIKey;
 var queryURL = "https://api.nytimes.com/svc/search/v2/articlesearch.json?q="+query+"&api-key=" + APIKey;
 var query = "politics";
 $.ajax({
