@@ -1,5 +1,5 @@
 //Global Variables
-var APIKey;
+var APIKey = "uTcqzVBtVKkANJqiUqXC2MdKZAcezB1A";
 
 function verifySearch(){
     var searchTerm = $("#searchTerm").val();
@@ -24,6 +24,22 @@ function defineSearchElements(query){
 
 function runSearch(queryURL){
     console.log(queryURL);
+    $.ajax({
+        url: queryURL,
+        method: "GET"
+      }).then(function(response) {
+        console.log(response);
+        // $("#sectionname").text(section.name);
+        // //response.docs[x].section_name
+        // $("#title").text(title);
+        // //response.docs[x].headline.main
+        // $("#author").text(author);
+        // //response.docs[x].byline.original"by name"
+        // $("#synopsis").text(synopsis);
+        // //response.docs[x].snippet
+        // $("#date").text(date);
+        // //response.docs[x].pub_date "yyyy-mm-ddThh:mm:ss+xxxx"
+      });
 }
 
 function clearSearch(){
