@@ -12,7 +12,7 @@ Designed by:
 Primary CSS Source from [Bootstrap](https://getbootstrap.com/). API from [The New York Times Developer Network](https://developer.nytimes.com/). This project utilizes jQuery and Ajax for requests.
 
 ## How to use this project:
-
+In order to use this project, you will need to have an API Key from the New York Times API. 
 
 Variables needed from Front End Group: keywords, numArticles, yearStart, yearEnd
 --API team will pull from index.html input ids and values upon click of searchButton
