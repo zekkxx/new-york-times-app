@@ -1,7 +1,8 @@
 //Global Variables
-var APIKey = "";
+var APIKey = ""; //localStorage.getItem("nytAPIKey");
 
 function addNewKey(){
+    // localStorage.setItem("nytAPIKey", $("#newAPIKey").val())
     APIKey = $("#newAPIKey").val();
     $("#keyModal").modal('toggle');
 }
@@ -34,21 +35,38 @@ function runSearch(queryURL){
     $.ajax({
         url: queryURL,
         method: "GET"
-    }).then(function(response) {
-        console.log(response);
-        for(let i=0; i<response.docs.length; i++){
-            // $("#sectionname").text(section.name);
-            console.log(response.docs[i].section_name);
-            // $("#title").text(title);
-            console.log(response.docs[i].headline.main);
-            // $("#author").text(author);
-            console.log(response.docs[i].byline.original); //"by name"
-            // $("#synopsis").text(synopsis);
-            console.log(response.docs[i].snippet);
-            // $("#date").text(date);
-            console.log(response.docs[i].pub_date); //"yyyy-mm-ddThh:mm:ss+xxxx"
-        }
+    }).then(function(res) {
+        //console.log(res);
+        renderResults(res.response.docs);
     });
+}
+
+function renderResults(dataArr){
+    var containerDiv = $("<div>");
+    containerDiv.attr("class", "container border bg-gray mb-5");
+    //Section Heading
+    var searchHeading = $("<h2>").attr("class", "mt-2").text("Search Results:");
+    containerDiv.append(searchHeading);
+    //Section Results
+    for(let i=0; i<$("#inputGroupSelect").val() && i<dataArr.length; i++){
+        var articleDiv = $("<div>");
+        articleDiv.attr("class", "p-3");
+
+        var headline = $("<h3>").text(dataArr[i].headline.main);
+        articleDiv.append(headline);
+
+        var byString = $("<h5>").text(dataArr[i].byline.original);//"by name"
+        articleDiv.append(byString);
+
+        var snippet = $("<p>").text(dataArr[i].snippet);
+        articleDiv.append(snippet);
+        
+        var date = $("<p>").text(dataArr[i].pub_date); //"yyyy-mm-ddThh:mm:ss+xxxx"
+        articleDiv.append(date);
+        
+        containerDiv.append(articleDiv);
+    }
+    $("#resultsContainer").html(containerDiv);
 }
 
 function clearSearch(){
@@ -57,4 +75,5 @@ function clearSearch(){
     $("#startYear").val("");
     $("#endYear").val("");
     $("#inputGroupSelect").val("1");
+    $("#resultsContainer").html("");
 }
