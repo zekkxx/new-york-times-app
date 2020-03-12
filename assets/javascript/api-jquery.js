@@ -1,10 +1,15 @@
 //Global Variables
-var APIKey = ""; //localStorage.getItem("nytAPIKey");
+var APIKey = "";
 
 function addNewKey(){
-    // localStorage.setItem("nytAPIKey", $("#newAPIKey").val())
-    APIKey = $("#newAPIKey").val();
+    localStorage.setItem("nytAPIKey", $("#newAPIKey").val())
+    loadAPIKeyFromMemory();
     $("#keyModal").modal('toggle');
+}
+
+function loadAPIKeyFromMemory(){
+    APIKey = localStorage.getItem("nytAPIKey");
+    $("#newAPIKey").val(APIKey);
 }
 
 function verifySearch(){
@@ -63,7 +68,7 @@ function renderResults(dataArr){
         
         var date = $("<p>").text(dataArr[i].pub_date); //"yyyy-mm-ddThh:mm:ss+xxxx"
         articleDiv.append(date);
-        
+
         containerDiv.append(articleDiv);
     }
     $("#resultsContainer").html(containerDiv);
@@ -77,3 +82,7 @@ function clearSearch(){
     $("#inputGroupSelect").val("1");
     $("#resultsContainer").html("");
 }
+
+$(document).ready(function(){
+    loadAPIKeyFromMemory();
+});
