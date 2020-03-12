@@ -1,13 +1,20 @@
 //Global Variables
-var APIKey = "uTcqzVBtVKkANJqiUqXC2MdKZAcezB1A";
+var APIKey = "";
+
+function addNewKey(){
+    APIKey = $("#newAPIKey").val();
+    $("#keyModal").modal('toggle');
+}
 
 function verifySearch(){
     var searchTerm = $("#searchTerm").val();
-    if(searchTerm){
+    if(!APIKey){
+        $("#keyModal").modal('toggle');
+    } else if(!searchTerm){
+        $("#searchAlert").text("Please provide a search term for this application!");
+    } else {
         $("#searchAlert").text("");
         defineSearchElements(searchTerm);
-    } else {
-        $("#searchAlert").text("Please provide a search term for this application!");
     }
 }
 
@@ -27,19 +34,21 @@ function runSearch(queryURL){
     $.ajax({
         url: queryURL,
         method: "GET"
-      }).then(function(response) {
+    }).then(function(response) {
         console.log(response);
-        // $("#sectionname").text(section.name);
-        // //response.docs[x].section_name
-        // $("#title").text(title);
-        // //response.docs[x].headline.main
-        // $("#author").text(author);
-        // //response.docs[x].byline.original"by name"
-        // $("#synopsis").text(synopsis);
-        // //response.docs[x].snippet
-        // $("#date").text(date);
-        // //response.docs[x].pub_date "yyyy-mm-ddThh:mm:ss+xxxx"
-      });
+        for(let i=0; i<response.docs.length; i++){
+            // $("#sectionname").text(section.name);
+            console.log(response.docs[i].section_name);
+            // $("#title").text(title);
+            console.log(response.docs[i].headline.main);
+            // $("#author").text(author);
+            console.log(response.docs[i].byline.original); //"by name"
+            // $("#synopsis").text(synopsis);
+            console.log(response.docs[i].snippet);
+            // $("#date").text(date);
+            console.log(response.docs[i].pub_date); //"yyyy-mm-ddThh:mm:ss+xxxx"
+        }
+    });
 }
 
 function clearSearch(){
