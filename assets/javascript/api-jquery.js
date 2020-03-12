@@ -1,5 +1,5 @@
 //Global Variables
-var APIKey = "";
+var APIKey;
 
 function addNewKey(){
     localStorage.setItem("nytAPIKey", $("#newAPIKey").val())
@@ -36,13 +36,17 @@ function defineSearchElements(query){
 }
 
 function runSearch(queryURL){
-    console.log(queryURL);
+    // console.log(queryURL);
     $.ajax({
         url: queryURL,
         method: "GET"
     }).then(function(res) {
-        //console.log(res);
+        // console.log(res);
         renderResults(res.response.docs);
+        $("#resultsContainer")[0].scrollIntoView({
+            "behavior": "smooth",
+            "block": "start"
+        });
     });
 }
 
@@ -56,19 +60,26 @@ function renderResults(dataArr){
     for(let i=0; i<$("#inputGroupSelect").val() && i<dataArr.length; i++){
         var articleDiv = $("<div>");
         articleDiv.attr("class", "p-3");
-
-        var headline = $("<h3>").text(dataArr[i].headline.main);
-        articleDiv.append(headline);
-
-        var byString = $("<h5>").text(dataArr[i].byline.original);//"by name"
-        articleDiv.append(byString);
-
+        //headline construction
+        var headline = $("<h3>");
+        var titleLink = $("<a>").attr({
+            "href": dataArr[i].web_url,
+            "class": "text-info"
+        }).text(dataArr[i].headline.main);
+        headline.append(titleLink);
+        var byString = $("<h5>").attr({"class": "text-secondary"}).text(dataArr[i].byline.original);//"by name"
+        //date construction
+        var date = $("<span>").attr({"class": "font-italic"}).text("Published on "
+            + new Date(dataArr[i].pub_date).toLocaleDateString('en-US', {  
+                day : 'numeric',
+                month : 'short',
+                year : 'numeric'
+            })
+        ); //"yyyy-mm-ddThh:mm:ss+xxxx"
+        //text snippet construction
         var snippet = $("<p>").text(dataArr[i].snippet);
-        articleDiv.append(snippet);
-        
-        var date = $("<p>").text(dataArr[i].pub_date); //"yyyy-mm-ddThh:mm:ss+xxxx"
-        articleDiv.append(date);
-
+        //paste components together
+        articleDiv.append(headline, byString, date, snippet);
         containerDiv.append(articleDiv);
     }
     $("#resultsContainer").html(containerDiv);
