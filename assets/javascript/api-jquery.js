@@ -64,7 +64,8 @@ function renderResults(dataArr){
         var headline = $("<h3>");
         var titleLink = $("<a>").attr({
             "href": dataArr[i].web_url,
-            "class": "text-info"
+            "class": "text-info",
+            "target": "_blank"
         }).text(dataArr[i].headline.main);
         headline.append(titleLink);
         var byString = $("<h5>").attr({"class": "text-secondary"}).text(dataArr[i].byline.original);//"by name"
