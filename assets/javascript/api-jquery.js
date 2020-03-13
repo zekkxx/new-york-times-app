@@ -17,7 +17,7 @@ function verifySearch(){
     if(!APIKey){
         $("#keyModal").modal('toggle');
     } else if(!searchTerm){
-        $("#searchAlert").text("Please provide a search term for this application.");
+        $("#searchAlert").text("Search Term Required.");
     } else if (searchTerm.search(/&/) != -1){
         $("#searchAlert").text("Search Term contains one or more of the following restricted characters: &")
     } else {
@@ -34,13 +34,13 @@ function defineSearchElements(query){
         $("#yearStartAlert").text("");
         query+="&begin_date="+yearStartVal+"0101";
     } else if(yearStartVal > new Date().getFullYear()){
-        $("#yearStartAlert").text("Please choose a year that has alreay occured.");
+        $("#yearStartAlert").text("Past or Present Year Required.");
         yearsAreGood = false;
     } else {
         $("#yearStartAlert").text("");
     }
     if(yearEndVal && yearEndVal<yearStartVal){
-        $("#yearEndAlert").text("Please choose a year that takes place after the starting year.");
+        $("#yearEndAlert").text("Year following Start Year Required.");
         yearsAreGood = false;
     } else if(yearEndVal){
         $("#yearEndAlert").text("");
