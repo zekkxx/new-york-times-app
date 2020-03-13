@@ -17,7 +17,9 @@ function verifySearch(){
     if(!APIKey){
         $("#keyModal").modal('toggle');
     } else if(!searchTerm){
-        $("#searchAlert").text("Please provide a search term for this application!");
+        $("#searchAlert").text("Please provide a search term for this application.");
+    } else if (searchTerm.search(/&/) != -1){
+        $("#searchAlert").text("Search Term contains one or more of the following restricted characters: &")
     } else {
         $("#searchAlert").text("");
         defineSearchElements(searchTerm);
@@ -25,11 +27,17 @@ function verifySearch(){
 }
 
 function defineSearchElements(query){
-    if($("#startYear").val() != ""){
-        query+="&begin_date="+$("#startYear").val()+"0101";
+    yearStartVal = $("#startYear").val();
+    yearEndVal = $("#endYear").val();
+    if(yearStartVal && yearStartVal <= new Date().getFullYear()){
+        query+="&begin_date="+yearStartVal+"0101";
+    } else if(yearStartVal > new Date().getFullYear()){
+        $("#yearStartAlert").text("Please choose a year that has alreay occured.");
     }
-    if($("#endYear").val() != ""){
-        query+="&end_date="+$("#endYear").val()+"1231";
+    if(yearEndVal && yearEndVal<yearStartVal){
+        $("#yearEndAlert").text("Please choose a year that takes place after the starting year.");
+    } else if(yearEndVal){
+        query+="&end_date="+yearEndVal+"1231";
     }
     runSearch("https://api.nytimes.com/svc/search/v2/articlesearch.json?q="
         +query+"&api-key=" + APIKey);
@@ -87,11 +95,13 @@ function renderResults(dataArr){
 }
 
 function clearSearch(){
-    $("#searchAlert").text("");
     $("#searchTerm").val("");
     $("#startYear").val("");
     $("#endYear").val("");
     $("#inputGroupSelect").val("1");
+    $("#searchAlert").text("");
+    $("#yearStartAlert").text("");
+    $("#yearEndAlert").text("");
     $("#resultsContainer").html("");
 }
 
