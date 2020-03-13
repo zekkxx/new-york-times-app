@@ -27,20 +27,31 @@ function verifySearch(){
 }
 
 function defineSearchElements(query){
-    yearStartVal = $("#startYear").val();
-    yearEndVal = $("#endYear").val();
+    var yearStartVal = $("#startYear").val();
+    var yearEndVal = $("#endYear").val();
+    var yearsAreGood = true;
     if(yearStartVal && yearStartVal <= new Date().getFullYear()){
+        $("#yearStartAlert").text("");
         query+="&begin_date="+yearStartVal+"0101";
     } else if(yearStartVal > new Date().getFullYear()){
         $("#yearStartAlert").text("Please choose a year that has alreay occured.");
+        yearsAreGood = false;
+    } else {
+        $("#yearStartAlert").text("");
     }
     if(yearEndVal && yearEndVal<yearStartVal){
         $("#yearEndAlert").text("Please choose a year that takes place after the starting year.");
+        yearsAreGood = false;
     } else if(yearEndVal){
+        $("#yearEndAlert").text("");
         query+="&end_date="+yearEndVal+"1231";
+    } else {
+        $("#yearEndAlert").text("");
     }
-    runSearch("https://api.nytimes.com/svc/search/v2/articlesearch.json?q="
-        +query+"&api-key=" + APIKey);
+    if(yearsAreGood){
+        runSearch("https://api.nytimes.com/svc/search/v2/articlesearch.json?q="
+            +query+"&api-key=" + APIKey);
+    }
 }
 
 function runSearch(queryURL){
