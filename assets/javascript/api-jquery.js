@@ -18,6 +18,8 @@ function verifySearch(){
         $("#keyModal").modal('toggle');
     } else if(!searchTerm){
         $("#searchAlert").text("Please provide a search term for this application!");
+    } else if (searchTerm.search(/&/) != -1){
+        $("#searchAlert").text("Search Term contains one or more of the following restricted characters: &")
     } else {
         $("#searchAlert").text("");
         defineSearchElements(searchTerm);
